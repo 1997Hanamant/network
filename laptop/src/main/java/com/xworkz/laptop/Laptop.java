@@ -6,19 +6,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Laptop {
-	@Value("HP")
+	//@Value("HP")
 	private String name;
-	@Value("Black")
+	//@Value("Black")
 	private String color;
-	@Value("300000D")
+	//@Value("300000D")
 	private double price;
-	@Autowired
+	//@Autowired
 	private Bag bag;
 
 	public Laptop() {
 		System.out.println(this.getClass().getSimpleName()+"bean created");	
 	}
-      public Laptop(String name, String color, double price ,Bag bag) {
+      public Laptop(@Value("HP") String name, @Value("Black")String color, @Value("2000D")double price ,@Autowired Bag bag) {
 		this.name = name;
 		this.color = color;
 		this.price = price;
@@ -48,7 +48,7 @@ public class Laptop {
 		this.price = price;	
 		
 		}
-
+        @Autowired
       public void setBag(Bag bag) {
     	  this.bag=bag;
       }
