@@ -1,8 +1,8 @@
 package com.xworkz.nirmala.entity;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,7 +12,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,22 +29,19 @@ public class NirmalaEntity extends ParentNirmalaEntity {
 	@GenericGenerator(name = "boss", strategy = "increment")
 	@GeneratedValue(generator = "boss")
 	@Min(value = 1)
-	@Column(name="id")
 	private Integer id;
 	@NotNull
-	@Column(name="location")
 	private String location;
 	@NotNull
-	@Column(name="gender")
 	private String gender;
 	@NotNull
-	@Column(name="type")
 	private String type;
 	@NotNull
-	@Column(name="cost")
 	private Double cost;
+	@NotNull
+	private LocalTime duration;
 
-	public NirmalaEntity(String location, String gender, String type, Double cost, String createdBy,
+	public NirmalaEntity(String location, String gender, String type, Double cost,LocalTime duration, String createdBy,
 			LocalDate ceratedDate, String updatedBy, LocalDate updatedDate) {
 		super(createdBy, ceratedDate, updatedBy, updatedDate);
 		// this.id = id;
@@ -53,6 +49,7 @@ public class NirmalaEntity extends ParentNirmalaEntity {
 		this.gender = gender;
 		this.type = type;
 		this.cost = cost;
+		this.duration=duration;
 	}
 
 }
